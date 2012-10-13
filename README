@@ -1,0 +1,10 @@
+libretro2joy : A libretro core that emulates USB gamepads with uinput.
+
+This might be handy for remapping buttons on physical gamepads, or synchronizing
+gamepad data over the network using RetroArch's netplay code.
+
+TODO:
+ * Analog support
+ * Launch a given executable with load_game_special.
+   - This will make synchronizing native games easier when using netplay.
+
