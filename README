@@ -3,7 +3,15 @@ libretro2joy : A libretro core that emulates USB gamepads with uinput.
 This might be handy for remapping buttons on physical gamepads, or synchronizing
 gamepad data over the network using RetroArch's netplay code.
 
+Currently, it maps the libretro "gamepad" to the layout of Logitech RumblePad 2.
+
 TODO:
  * Launch a given executable with load_game_special.
    - This will make synchronizing native games easier when using netplay.
+   - Distant future: optionally hook SDL calls and put the A/V into libretro.
+ * Visual feedback of some sort for the emulator window.
+   - Draw a controller for each one connected, perhaps.
+ * Optional (#ifdef?  somehow chosen at runtime?) Xbox-style button mappings.
+   - Haven't looked into a Windows port yet, but it might be an easier target.
+   - Games these days tend to assume Xbox button layout.
 
