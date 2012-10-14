@@ -45,12 +45,14 @@ bool retro_load_game(const struct retro_game_info *info)
 {
 	(void)info;
 	retro_set_controller_port_device(0, RETRO_DEVICE_JOYPAD);
+	retro_set_controller_port_device(1, RETRO_DEVICE_JOYPAD);
 	return true;
 }
 
 void retro_unload_game(void)
 {
 	retro_set_controller_port_device(0, RETRO_DEVICE_NONE);
+	retro_set_controller_port_device(1, RETRO_DEVICE_NONE);
 }
 
 void retro_reset(void)
@@ -84,8 +86,8 @@ void retro_set_controller_port_device(unsigned port, unsigned device)
 			ioctl_warn(uinp_fd[port], UI_DEV_DESTROY, 0);
 			close_uinp_fd(port);
 		}
-	} else if ( device != RETRO_DEVICE_JOYPAD ) {
-		puts("device types other than JOYPAD not yet implemented.");
+	} else if ( device != RETRO_DEVICE_JOYPAD && device != RETRO_DEVICE_ANALOG ) {
+		puts("device types other than JOYPAD or ANALOG not yet implemented.");
 	} else if ( uinp_fd[port] != -1 ) {
 		printf("port %d already has controller (fd %d).\n", port, uinp_fd[port]);
 	} else if ( (uinp_fd[port] = open("/dev/uinput", O_WRONLY | O_NONBLOCK)) == -1 ) {
